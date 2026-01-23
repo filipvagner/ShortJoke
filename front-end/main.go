@@ -75,30 +75,30 @@ const htmlTemplate = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Go Shortener</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f4f4f9; }
-        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 400px; }
-        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
-        button { background: #007bff; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 4px; }
-        .result { margin-top: 20px; padding: 10px; background: #e2e3e5; border-radius: 4px; word-break: break-all; }
-    </style>
+	<meta charset="UTF-8">
+	<title>Go Shortener</title>
+	<style>
+		body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f4f4f9; }
+		.card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 400px; }
+		input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+		button { background: #007bff; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 4px; }
+		.result { margin-top: 20px; padding: 10px; background: #e2e3e5; border-radius: 4px; word-break: break-all; }
+	</style>
 </head>
 <body>
-    <div class="card">
-        <h2>URL Shortener</h2>
-        <form method="POST">
-            <input type="url" name="longUrl" placeholder="https://example.com" required>
-            <button type="submit">Shorten</button>
-        </form>
-        {{if .ShortURL}}
-            <div class="result">
-                <strong>Your short link:</strong><br>
-                <a href="{{.ShortURL}}">{{.ShortURL}}</a>
-            </div>
-        {{end}}
-    </div>
+	<div class="card">
+		<h2>URL Shortener</h2>
+		<form method="POST">
+			<input type="url" name="longUrl" placeholder="https://example.com" required>
+			<button type="submit">Shorten</button>
+		</form>
+		{{if .ShortURL}}
+			<div class="result">
+				<strong>Your short link:</strong><br>
+				<a href="{{.ShortURL}}" target="_blank">{{.ShortURL}}</a>
+			</div>
+		{{end}}
+	</div>
 </body>
 </html>
 `
