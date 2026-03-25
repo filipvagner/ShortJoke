@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"net/url"
 	"sync"
 )
 
@@ -42,6 +43,16 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		longURL := r.FormValue("longUrl")
 		if longURL == "" {
 			http.Error(w, "URL cannot be empty", http.StatusBadRequest)
+			return
+		}
+
+		parsed, err := url.Parse(longURL)
+		if err != nil || parsed.Scheme == "" || parsed.Host == "" {
+			http.Error(w, "Invalid URL", http.StatusBadRequest)
+			return
+		}
+		if parsed.Scheme != "http" && parsed.Scheme != "https" {
+			http.Error(w, "Unsupported URL scheme", http.StatusBadRequest)
 			return
 		}
 
